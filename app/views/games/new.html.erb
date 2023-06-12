@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+      <h1>Longest Word Game</h1>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">Random Letters:</h2>
+          <ul class="list-group list-group-flush">
+            <% @letters.each do |letter| %>
+              <li class="list-group-item text-center"><%= letter %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h2>Submit Your Word:</h2>
+        <form action="/score" method="post" data-turbo="false">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="letters" value="<%= @letters.join(' ') %>">
+          <label for="word">Word:</label>
+          <input type="text" id="word" name="word">
+          <input type="submit" value="Play">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
